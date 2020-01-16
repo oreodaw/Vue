@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- development version, includes helpful console warnings -->
+
+    <title>Tutorial de vue</title>
+</head>
+<body>
+    <section id="app">
+        <article  v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">
+            <h1>{{titulo}}</h1>
+            <!--intercambio de datos desde el input hacia el javascript
+            El @keyup.enter es un evento que lo que hace esque podamos presionar enter en vex de hacerlo con el raton
+
+            -->
+            <input type="text" v-model="nuevaFruta" @keyup.enter="agregarFruta">
+            <!--Primera forma de crear un evento
+            otra forma seria @click="agregarFruta"
+            -->
+            <button v-on:click="agregarFruta">Agregar</button>
+            <ul>
+                <li v-for='fruta of frutas'>{{fruta.cantidad}} - {{fruta.nombre}}
+                    <span v-if='fruta.cantidad===0'> - sin stock</span>
+                </li>
+            </ul>
+        </article>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="scripts/tutorial.js"></script>
+</body>
+</html>
